@@ -23,11 +23,11 @@ const ContactUs = () => {
   return (
     <div className="py-6 bg-[#1153A1] text-white">
       <div className="container mx-auto p-4 lg:flex justify-center items-center md:flex">
-        <div className="lg:w-1/4 mb-4 lg:mb-0 text-center lg:text-left">
+        <div className="lg:w-1/4 text-start md:text-center lg:text-left md:ml-12  ml-20 mr-20">
           <img
             src="https://portal.dinus.ac.id/assets/images/Logo%20Udinus%20-%20Official%2002.png"
             alt="Udinus Logo"
-            className="w-52 h-52  md:ml-40  ml-16 -mr-2"
+            className="w-52 h-52 "
           />
         </div>
 
