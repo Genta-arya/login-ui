@@ -101,7 +101,7 @@ const Navbar = () => {
           </button>
 
           {dropdownOpen && (
-            <div className="absolute bg-white w-screen p-4 text-gray-800 shadow-lg -ml-5 mt-7 border-t-2 border-black rounded-b-lg">
+            <div className="absolute  bg-white w-screen p-12 text-gray-800 shadow-lg -ml-5 mt-7 border-t-2 border-black rounded-b-lg">
               <div className="flex items-center justify-between ">
                 <button
                   onClick={onPrevClick}
