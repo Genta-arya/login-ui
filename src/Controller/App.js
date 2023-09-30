@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import SplashScreen from "../View/Splash/Index";
 import IndexLogin from "../View/User/Login/Index";
 import DetailNotFound from "../View/404/Index";
+import Home from "../View/User/Home/Index";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Navigate to="/mahasiswa" />} />
   
           <Route path="/mahasiswa" element={<IndexLogin />} />
+          <Route path="/home" element={<Home />} />
      
           <Route path="*" element={<DetailNotFound />} />
         </Routes>

@@ -11,7 +11,7 @@ const IndexLogin = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // Tampilkan modal setelah beberapa detik (contoh: 5 detik)
+
     const timer = setTimeout(() => {
       setShowModal(true);
     }, 500);
