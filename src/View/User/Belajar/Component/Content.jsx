@@ -51,6 +51,7 @@ const ContentPage = ({ searchTerm }) => {
     selectedCategory,
     selectedCountry
   );
+ 
 
   const carouselSettings = {
     dots: false,
