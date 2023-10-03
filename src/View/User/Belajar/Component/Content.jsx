@@ -127,7 +127,7 @@ const ContentPage = ({ searchTerm }) => {
                       <img
                         src={item.imageURL}
                         alt={`Image ${index + 1}`}
-                        className="mt-4 mx-auto bg-cover"
+                        className="mt-4 mx-auto rounded-lg mb-5 bg-cover"
                       />
                       <h3 className="text-lg font-semibold mb-2">
                         {item.title}
@@ -139,7 +139,7 @@ const ContentPage = ({ searchTerm }) => {
               </div>
             ) : (
               <div className="text-center mt-12">
-                <p>Tidak ada data</p>
+                <p>Berita tidak ditemukan</p>
               </div>
             )}
             <div className="flex justify-center py-4 p-4">
@@ -197,7 +197,7 @@ const ContentPage = ({ searchTerm }) => {
                     <img
                       src={item.imageURL}
                       alt={`Image ${index + 1}`}
-                      className="mt-4 mx-auto"
+                      className="mt-4 mx-auto rounded-lg mb-5"
                     />
                     <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
                     <p className="text-gray-500 text-sm">{item.author}</p>
