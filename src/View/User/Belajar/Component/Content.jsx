@@ -121,7 +121,7 @@ const ContentPage = ({ searchTerm }) => {
         <Navbar />
       </div>
 
-      <div className="max-[768px]:hidden md:block  ">
+      <div className="max-[768px]:hidden md:block   ">
         {isLoading ? (
           <div className="flex justify-center items-center bg-white h-screen">
             <ul className="animate-pulse grid grid-cols-3 gap-8">
@@ -146,7 +146,7 @@ const ContentPage = ({ searchTerm }) => {
               />
             </div>
             {newsData.length > 0 ? (
-              <div className="items-center justify-center flex py-4 mt-4 p-12 max-md:p-6">
+              <div className="items-center justify-center flex py-4 mt-4 p-12 max-md:p-6 ">
                 <ul className="grid grid-cols-3 gap-8 max-md:grid-cols-1 ">
                   {getPageData().map((item, index) => (
                     <div
@@ -193,7 +193,7 @@ const ContentPage = ({ searchTerm }) => {
         )}
       </div>
 
-      <div className="lg:hidden flex justify-center p-4">
+      <div className="lg:hidden min-[765px]:hidden  flex justify-center p-4">
         <div className="grid grid-cols-1 w-screen ">
           <div className="mb-4">
             <Menu
@@ -207,7 +207,7 @@ const ContentPage = ({ searchTerm }) => {
           </div>
 
           {isLoading ? (
-            <div className="flex justify-center w-screen   mt-4">
+            <div className="flex justify-center w-screen mt-4">
               <ul className="animate-pulse grid grid-cols-3 gap-8">
                 {[1, 2, 3].map((index) => (
                   <li
@@ -217,30 +217,32 @@ const ContentPage = ({ searchTerm }) => {
                 ))}
               </ul>
             </div>
+          ) : newsData.length > 0 ? (
+            <Slider {...carouselSettings} className="">
+              {newsData.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-3 text-center relative transition-transform transform hover:scale-105 rounded-2xl cursor-pointer border-slate-400 border-b-8 border hover:border-purple-400 hover:text-purple-800"
+                >
+                  {index === 0 && (
+                    <span className="indicator-item badge badge-primary">
+                      new
+                    </span>
+                  )}
+                  <img
+                    src={item.imageURL}
+                    alt={`Image ${index + 1}`}
+                    className="mt-4 mx-auto rounded-lg mb-5"
+                  />
+                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                  <p className="text-gray-500 text-sm">{item.author}</p>
+                </div>
+              ))}
+            </Slider>
           ) : (
-            newsData.length > 0 && (
-              <Slider {...carouselSettings} className="">
-                {newsData.map((item, index) => (
-                  <div
-                    key={index}
-                    className="  bg-white  p-3 text-center relative transition-transform transform hover:scale-105 rounded-2xl cursor-pointer border-slate-400 border-b-8 border hover:border-purple-400 hover:text-purple-800"
-                  >
-                    {index === 0 && (
-                      <span className="indicator-item badge badge-primary">
-                        new
-                      </span>
-                    )}
-                    <img
-                      src={item.imageURL}
-                      alt={`Image ${index + 1}`}
-                      className="mt-4 mx-auto rounded-lg mb-5"
-                    />
-                    <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                    <p className="text-gray-500 text-sm">{item.author}</p>
-                  </div>
-                ))}
-              </Slider>
-            )
+            <div className="text-center mt-12 mb-12 font-sans">
+              <p>Tidak ada berita</p>
+            </div>
           )}
         </div>
       </div>
