@@ -18,7 +18,6 @@ const ContentPage = ({ searchTerm }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
   const itemsPerPage = 6;
-  
 
   useEffect(() => {
     document.title = `BeritaKu  || ${selectedCategory}`;
@@ -55,8 +54,16 @@ const ContentPage = ({ searchTerm }) => {
 
     async function fetchData() {
       try {
-        const newsData = await getNews(selectedCategory, selectedCountry);
-        const filteredData = newsData.articles.filter((article) =>
+        const apiUrl = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&category=${selectedCategory}&apiKey=3c3fec3ba03344b4990ba080b3a0e99b`;
+
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch news data");
+        }
+
+        const data = await response.json();
+        const filteredData = data.articles.filter((article) =>
           article.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
         const newsDataWithImages = filteredData.map((item) => ({
@@ -75,13 +82,11 @@ const ContentPage = ({ searchTerm }) => {
     fetchData();
   }, [searchTerm, selectedCategory, selectedCountry]);
 
- 
   // const { data: newsData, isLoading } = useNewsQuery(
   //   searchTerm,
   //   selectedCategory,
   //   selectedCountry
   // );
- 
 
   const carouselSettings = {
     dots: false,

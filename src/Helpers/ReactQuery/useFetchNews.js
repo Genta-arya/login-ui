@@ -39,17 +39,15 @@ export function useNewsQuery(searchTerm, selectedCategory, selectedCountry) {
           );
         }
 
-     
         const newsDataWithImages = filteredData.map((item) => ({
           ...item,
           imageURL: getRandomImageURL(),
         }));
 
-    
         return newsDataWithImages.reverse();
       } catch (error) {
         console.error("Error fetching news:", error);
-        throw error; 
+        throw error;
       }
     }
   );
