@@ -9,12 +9,16 @@ import Menu from "./Menu";
 import Footer from "./Footer";
 
 import { useNewsQuery } from "../../../../Helpers/ReactQuery/useFetchNews";
+import { getNews, getRandomImageURL } from "../../../../Model/Service/Api";
 
 const ContentPage = ({ searchTerm }) => {
   const [selectedCategory, setSelectedCategory] = useState("business");
   const [selectedCountry, setSelectedCountry] = useState("id");
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [newsData, setNewsData] = useState([]);
   const itemsPerPage = 6;
+  
 
   useEffect(() => {
     document.title = `BeritaKu  || ${selectedCategory}`;
@@ -46,11 +50,37 @@ const ContentPage = ({ searchTerm }) => {
     setSelectedCountry(countryCode);
   };
 
-  const { data: newsData, isLoading } = useNewsQuery(
-    searchTerm,
-    selectedCategory,
-    selectedCountry
-  );
+  useEffect(() => {
+    setIsLoading(true);
+
+    async function fetchData() {
+      try {
+        const newsData = await getNews(selectedCategory, selectedCountry);
+        const filteredData = newsData.articles.filter((article) =>
+          article.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        const newsDataWithImages = filteredData.map((item) => ({
+          ...item,
+          imageURL: getRandomImageURL(),
+        }));
+        const reversedNewsData = newsDataWithImages.reverse();
+        setNewsData(reversedNewsData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        setIsLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [searchTerm, selectedCategory, selectedCountry]);
+
+ 
+  // const { data: newsData, isLoading } = useNewsQuery(
+  //   searchTerm,
+  //   selectedCategory,
+  //   selectedCountry
+  // );
  
 
   const carouselSettings = {
