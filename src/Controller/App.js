@@ -5,6 +5,9 @@ import SplashScreen from "../View/Splash/Index";
 import IndexLogin from "../View/User/Login/Index";
 import DetailNotFound from "../View/404/Index";
 import Home from "../View/User/Home/Index";
+import IndexBelajar from "../View/User/Belajar/Index";
+import Content from "../View/User/Belajar/Component/Content";
+import News from "../View/User/Belajar/Component/News";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +29,10 @@ function App() {
   
           <Route path="/mahasiswa" element={<IndexLogin />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/news" element={<Content />} />
+          <Route path="/news-query" element={<News />} />
+
+          <Route path="/tailwind" element={<IndexBelajar />} />
      
           <Route path="*" element={<DetailNotFound />} />
         </Routes>

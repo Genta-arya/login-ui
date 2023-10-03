@@ -1,7 +1,8 @@
 import React from 'react';
 import kitchenProducts from '../../../../Model/Service/Categories';
-import formatRupiah from '../../../../Helpers/Formating';
+
 import ProductContent from './Product';
+import formatRupiah from '../../../../Helpers/Utils/Formating';
 
 const getRandomImageURL = () => {
   const randomId = Math.floor(Math.random() * 11) + 20; // Menghasilkan ID acak antara 20 hingga 30
